@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mediaapp
+      POSTGRES_PASSWORD: mediaapp_pass
+      POSTGRES_DB: mediaapp_db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env # optional: use this if you keep env values per-project
+    environment:
+      # Recommended: keep credentials in .env or CI secrets. This points the app to the DB service.
+      DATABASE_URL: postgresql+psycopg2://mediaapp:mediaapp_pass@db:5432/mediaapp_db
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  db-data:

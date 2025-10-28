@@ -1,0 +1,19 @@
+# Python/Docker ignore for backend build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+htmlcov/
+.env
+.venv/
+venv/
+.env.*
+.git/
+.gitignore
+.vscode/
+.DS_Store
+*.sqlite3
+build/
+dist/
+*.egg-info/
