@@ -1,7 +1,7 @@
 from sqlalchemy import  Column, DateTime, Integer, String, ForeignKey, Enum as SQLEnum, Text, func
 from sqlalchemy.orm import relationship
 import enum
-from app.models.base import Base, TimestampMixin
+from app.models.base import Base
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 class Post(Base):

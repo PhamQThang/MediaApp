@@ -2,14 +2,7 @@
 
 # Virtual environment
 activate:
-	@echo "Activating virtual environment..."
-	@if [ -d "venv" ]; then \
-		. venv/bin/activate; \
-	else \
-		echo "Creating virtual environment..."; \
-		python -m venv venv; \
-		. venv/bin/activate; \
-	fi
+	. venv/bin/activate
 
 # Package management
 lock:

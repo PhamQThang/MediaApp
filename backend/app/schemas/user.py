@@ -1,8 +1,7 @@
 from datetime import datetime
 from typing import Optional
 from uuid import UUID
-from groq import BaseModel
-from pydantic import EmailStr
+from pydantic import BaseModel, EmailStr
 
 
 class UserBase(BaseModel):
@@ -30,5 +29,5 @@ class UserResponse(UserBase):
     is_active: bool
     is_verified: bool
 
-    class Config(BaseModel.Config):
+    class Config(BaseModel):
         orm_attribute = True
